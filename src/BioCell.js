@@ -22,7 +22,6 @@ class BioCell extends Component {
 		avatarSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 		photoComponent: PropTypes.node,
 		photoSource: PropTypes.any,
-		photoStyle: PropTypes.oneOfType([Image.propTypes.style, ViewPropTypes]),
 	}, AccessoryCell.propTypes);
 
 
