@@ -38,7 +38,7 @@ class Table extends Component {
 	};
 
 	render() {
-		const { style, scrollViewStyle, children } = this.props;
+		const { style, scrollViewStyle, children, scrollViewRef } = this.props;
 		const { scrollable, accentColor, theme, blendAccent, colorPalette, disabled } = this.props;
 
 		let palette = getColorPalette(theme, blendAccent, accentColor);
@@ -70,7 +70,7 @@ class Table extends Component {
 		const wrapScrollView = (component) => {
 			if (scrollable) {
 				return (
-					<ScrollView style={[styles.container(palette), scrollViewStyle]}>
+					<ScrollView ref={scrollViewRef} style={[styles.container(palette), scrollViewStyle]}>
 						{component}
 					</ScrollView>
 				);
