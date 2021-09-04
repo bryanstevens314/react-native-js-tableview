@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, ViewPropTypes } from 'react-native';
+import { ScrollView, View, ViewPropTypes, KeyboardAvoidingView } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { COLOR_ACCENT, getColorPalette } from './assets/colors';
@@ -38,7 +38,7 @@ class Table extends Component {
 	};
 
 	render() {
-		const { style, scrollViewStyle, children, scrollViewRef } = this.props;
+		const { style, scrollViewStyle, scrollViewParentStyle, children, scrollViewRef } = this.props;
 		const { scrollable, accentColor, theme, blendAccent, colorPalette, disabled } = this.props;
 
 		let palette = getColorPalette(theme, blendAccent, accentColor);
@@ -70,9 +70,14 @@ class Table extends Component {
 		const wrapScrollView = (component) => {
 			if (scrollable) {
 				return (
-					<ScrollView ref={scrollViewRef} style={[styles.container(palette), scrollViewStyle]}>
-						{component}
-					</ScrollView>
+					<KeyboardAvoidingView
+					  behavior={"height"}
+					  style={scrollViewParentStyle}
+					  keyboardVerticalOffset={0}>
+						<ScrollView ref={scrollViewRef} style={[styles.container(palette), scrollViewStyle]}>
+							{component}
+						</ScrollView>
+					</KeyboardAvoidingView>
 				);
 			} else {
 				return component;
