@@ -3,7 +3,6 @@ import { ActivityIndicator, Platform, TouchableNativeFeedback, TouchableOpacity,
 import PropTypes from 'prop-types';
 
 import Cell from './Cell';
-import Icon from './assets/icons';
 import { ThemeContext } from './ThemeContext';
 
 import { accessoryCellStyles as styles } from './styles';
@@ -51,8 +50,6 @@ class AccessoryCell extends Component {
 				component = <ActivityIndicator animating={true} color={colorPalette.progress} size='small' />;
 			} else if (accessoryComponent) {
 				component = accessoryComponent;
-			} else if (accessory) {
-				component = <Icon name={accessory} style={styles.accessory(accessory, colorPalette, disabled)} />;
 			}
 
 			if (component) {
